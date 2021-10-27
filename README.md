@@ -1,0 +1,2 @@
+# org.FastRabbitMQ.Spring
+FastRabbitMQ
