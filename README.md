@@ -2,7 +2,8 @@
 
 in Application add Annotation
 ```csharp
-@FastRabbitConfig(aopType = FastRabbitAop.class,host = "127.0.0.1",passWord = "guest",userName = "guest",port = 5672,virtualHost = "/")
+@FastRabbitConfig(aopType = FastRabbitAop.class,host = "127.0.0.1",passWord = "guest",
+	userName = "guest",port = 5672,virtualHost = "/")
 @FastRabbitReceiveConfig(aopType = FastRabbitAop.class,receiveType = FastRabbitEnum.class)
 
 or
@@ -62,19 +63,19 @@ Test
 IFastRabbit iFastRabbit;
   
 var config =new ConfigModel();
-		var map =new HashMap<String,Object>();
-		map.put("gh","admin");
-		map.put("kid",101);
+var map =new HashMap<String,Object>();
+map.put("gh","admin");
+map.put("kid",101);
 
-		config.setQueueName("test");
-		Exchange exchange =new Exchange();
-		exchange.setExchangeName("ex");
-		exchange.setExchangeType(ExchangeType.direct);
-		exchange.setRouteKey("key");
-		config.setExchange(exchange);
+config.setQueueName("test");
+Exchange exchange =new Exchange();
+exchange.setExchangeName("ex");
+exchange.setExchangeType(ExchangeType.direct);
+exchange.setRouteKey("key");
+config.setExchange(exchange);
     
-		iFastRabbit.send(config,map);
+iFastRabbit.send(config,map);
 
-		iFastRabbit.delete(config);  
+iFastRabbit.delete(config);  
   
 ```
