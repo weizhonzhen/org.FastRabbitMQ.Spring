@@ -33,6 +33,37 @@ public class FastRabbitAop  implements IFastRabbitAop {
 
     }
 }
+
+public enum FastRabbitEnum {
+    INSTANCE;
+    public static List<ConfigModel> receive = new ArrayList<ConfigModel>() {
+        {
+            add(new ConfigModel() {{
+                setQueueName("test");
+                setAutoAsk(false);
+                setExchange(new Exchange() {{
+                    setRouteKey("key");
+                    setExchangeType(org.FastRabbitMQ.Spring.Model.ExchangeType.direct);
+                    setExchangeName("ex");
+                }});
+            }});
+
+            add(new ConfigModel() {{
+                setQueueName("test1");
+                setAutoAsk(false);
+                setExchange(new Exchange() {{
+                    setRouteKey("key1");
+                    setExchangeType(ExchangeType.direct);
+                    setExchangeName("ex1");
+                }});
+            }});
+        }
+    };
+
+    public static ConfigModel getReceive() {
+        return receive.get(0);
+    }
+}
 ```
 
 in resources add db.json
